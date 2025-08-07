@@ -15,11 +15,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String password;
+    private String password; // Will be encrypted
     private String phone;
     private String profileImageUrl; // URL to image (readable by frontend)
     @Enumerated(EnumType.STRING)
-    private Role role; // e.g., ADMIN, CUSTOMER, INSPECTOR.
+    @Builder.Default
+    private Role role = Role.CUSTOMER; // ✅ Default set here; // e.g., ADMIN, CUSTOMER, INSPECTOR.
 }
